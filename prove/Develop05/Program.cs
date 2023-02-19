@@ -15,6 +15,7 @@ class Program
 
     while (quit == false)
     {
+      Console.WriteLine();
       Console.WriteLine($"You have {eternalQuest.getTotalPoints()} points.");
       Console.WriteLine();
       Console.WriteLine("Menu Options: ");

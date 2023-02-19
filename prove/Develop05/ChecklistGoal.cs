@@ -10,7 +10,7 @@ class ChecklistGoal : Goal {
   }
 
   public void SetCompletedBonus(int completedBonus) {
-    _completedBonus = _completedBonus;
+    _completedBonus = completedBonus;
   }
 
   public override string GetOutput(){
@@ -27,7 +27,7 @@ class ChecklistGoal : Goal {
   {
     _completedBonus++;
     _accomplishedPoints += _pointsPerGoal;
-    if (_completedBonus == 3) {
+    if (_completedBonus == _bonusTimes) {
       _accomplishedPoints += _bonusAmount;
       _completedBonus = 0;
       _isComplete = true;

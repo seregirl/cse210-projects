@@ -6,7 +6,6 @@ class EternalGoal : Goal {
  public override void RecordEvent()
   {
     _accomplishedPoints += _pointsPerGoal;
-    _isComplete = true;
   }
   public override bool IsComplete()
   {

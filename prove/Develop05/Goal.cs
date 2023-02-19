@@ -18,15 +18,16 @@ abstract class Goal {
   public string GetName() {
     return _name;
   }
-  // public string GetDescription() {
-  //   return _description;
-  // }
+
   public int GetPointsPerGoal() {
     return _pointsPerGoal;
   }
 
   public void SetAccomplishedPoints(int points) {
     _accomplishedPoints = points;
+  }
+  public void SetCompleteStatus(bool isComplete) {
+    _isComplete = isComplete;
   }
   public int GetAccomplishedPoints() {
     return _accomplishedPoints;

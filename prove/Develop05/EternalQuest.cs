@@ -8,19 +8,17 @@ class EternalQuest {
     Console.WriteLine("2. Eternal Goal ");
     Console.WriteLine("3. Checklist Goal");
     Console.Write("Which type of Goal would you like to create? ");
-    Console.WriteLine();
+    string option = Console.ReadLine();
     Console.Write("What is the name of your goal? ");
     string name = Console.ReadLine();
-    Console.WriteLine();
     Console.Write("What is a short description of it? ");
     string description = Console.ReadLine();
-    Console.WriteLine();
     Console.Write("What is the amount of points associated with this goal? ");
     int points = int.Parse(Console.ReadLine());
 
     Goal goal;
     
-    switch (Console.ReadLine())
+    switch (option)
       {
         case "1":
           goal = new SimpleGoal(name, description, points);
@@ -31,10 +29,8 @@ class EternalQuest {
           goals.Add(goal);
           break;
         case "3":
-          Console.WriteLine();
           Console.Write("How many times does this goal need to be accomplished for a bonus? ");
           int bonusTimes = int.Parse(Console.ReadLine());
-          Console.WriteLine();
           Console.Write("What is the bonus for accomplishing it that many times? ");
           int bonus = int.Parse(Console.ReadLine());
           goal = new ChecklistGoal(name, description, points, bonusTimes, bonus);
@@ -65,7 +61,7 @@ class EternalQuest {
                 outputFile.WriteLine(goal.GetFileOutput());
             }
         }
-
+  Console.Write($"Goals successfully saved to {filename}");
   }
 
   public void LoadGoals() {
@@ -83,8 +79,10 @@ class EternalQuest {
             int accomplishedPoints = int.Parse(parts[4]);
             
             if (type == "SimpleGoal") {
+              bool isComplete = parts[5] == "True";
               SimpleGoal goal = new SimpleGoal(name, description, pointsPerGoal);
               goal.SetAccomplishedPoints(accomplishedPoints);
+              goal.SetCompleteStatus(isComplete);
               goals.Add(goal);
             } else if (parts[0] == "EternalGoal") {
               EternalGoal goal = new EternalGoal(name, description, pointsPerGoal);
